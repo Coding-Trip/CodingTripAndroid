@@ -23,9 +23,8 @@ android {
 
 ext {
     support_lib_version = '27.0.2'
-
-    arch_runtime_version = '1.0.3'
-    arch_version = '1.0.0'
+    constraint_layout_version = '1.0.2'
+    ktx_version = '0.1'
 
     kodein_version = '4.1.0'
 
@@ -44,16 +43,11 @@ dependencies {
     implementation "com.android.support:appcompat-v7:$support_lib_version"
     implementation "com.android.support:recyclerview-v7:$support_lib_version"
     implementation "com.android.support:design:$support_lib_version"
-    implementation "com.android.support.constraint:constraint-layout:1.0.2"
+    implementation "com.android.support.constraint:constraint-layout:$constraint_layout_version"
+    implementation "androidx.core:core-ktx:$ktx_version"
 
     // di
     implementation "com.github.salomonbrys.kodein:kodein-android:$kodein_version"
-
-    // architecture component
-    implementation "android.arch.lifecycle:runtime:$arch_runtime_version"
-    implementation "android.arch.lifecycle:extensions:$arch_version"
-    implementation "android.arch.lifecycle:reactivestreams:$arch_version"
-    kapt "android.arch.lifecycle:compiler:$arch_version"
 
     // api
     implementation "com.squareup.moshi:moshi:$moshi_version"
