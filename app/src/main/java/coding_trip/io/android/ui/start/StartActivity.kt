@@ -7,7 +7,7 @@ import android.support.customtabs.CustomTabsIntent
 import android.support.v7.app.AppCompatActivity
 import coding_trip.io.android.BuildConfig
 import coding_trip.io.android.R
-import coding_trip.io.android.repository.AuthRepository
+import coding_trip.io.android.domain.repository.AuthRepository
 import coding_trip.io.android.ui.home.HomeActivity
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers

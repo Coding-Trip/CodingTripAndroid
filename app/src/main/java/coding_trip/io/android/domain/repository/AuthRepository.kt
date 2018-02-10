@@ -1,4 +1,4 @@
-package coding_trip.io.android.repository
+package coding_trip.io.android.domain.repository
 
 import android.content.Context
 import androidx.content.edit
