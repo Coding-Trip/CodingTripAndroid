@@ -12,6 +12,25 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        multiDexEnabled true
+
+        def CLIENT_ID
+        def CLIENT_SECRET
+
+        def file = project.file("gradle.properties")
+        if (file.exists()) {
+            def properties = new Properties()
+            properties.load(file.newDataInputStream())
+            CLIENT_ID = properties.get("CLIENT_ID")
+            CLIENT_SECRET = properties.get("CLIENT_SECRET")
+        } else {
+            CLIENT_ID = System.getenv("CLIENT_ID")
+            CLIENT_SECRET = System.getenv("CLIENT_SECRET")
+        }
+
+        buildConfigField 'String', 'CLIENT_ID', "$CLIENT_ID"
+        buildConfigField 'String', 'CLIENT_SECRET', "$CLIENT_SECRET"
     }
     buildTypes {
         release {
@@ -25,6 +44,8 @@ ext {
     support_lib_version = '27.0.2'
     constraint_layout_version = '1.1.0-beta5'
     ktx_version = '0.1'
+
+    rxkotlin_version = '2.2.0'
 
     kodein_version = '4.1.0'
 
@@ -45,8 +66,13 @@ dependencies {
     implementation "com.android.support:appcompat-v7:$support_lib_version"
     implementation "com.android.support:recyclerview-v7:$support_lib_version"
     implementation "com.android.support:design:$support_lib_version"
+    implementation "com.android.support:customtabs:$support_lib_version"
     implementation "com.android.support.constraint:constraint-layout:$constraint_layout_version"
     implementation "androidx.core:core-ktx:$ktx_version"
+
+    // rx
+    implementation "io.reactivex.rxjava2:rxkotlin:$rxkotlin_version"
+    implementation "com.trello.rxlifecycle2:rxlifecycle-android-lifecycle-kotlin:$rxkotlin_version"
 
     // di
     implementation "com.github.salomonbrys.kodein:kodein-android:$kodein_version"
