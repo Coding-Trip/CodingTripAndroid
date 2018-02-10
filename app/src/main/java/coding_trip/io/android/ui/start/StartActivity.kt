@@ -5,7 +5,6 @@ import android.net.Uri
 import android.os.Bundle
 import android.support.customtabs.CustomTabsIntent
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import coding_trip.io.android.BuildConfig
 import coding_trip.io.android.R
 import coding_trip.io.android.repository.AuthRepository
@@ -13,6 +12,7 @@ import coding_trip.io.android.ui.home.HomeActivity
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_start.login
+import timber.log.Timber
 
 class StartActivity : AppCompatActivity() {
 
@@ -53,13 +53,12 @@ class StartActivity : AppCompatActivity() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 authRepository.saveAccessToken(it)
-                Log.d("StartActivity", "Token: $it")
+                Timber.d("Token: $it")
 
                 val intent = Intent(this, HomeActivity::class.java)
                 startActivity(intent)
             }, {
-                TODO("This log implementation will be replaced by Timber")
-                Log.e("StartActivity", "Failed to load access token")
+                Timber.e("Failed to load access token")
             })
     }
 
