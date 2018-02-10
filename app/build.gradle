@@ -13,6 +13,8 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
+        multiDexEnabled true
+
         def CLIENT_ID
         def CLIENT_SECRET
 
@@ -43,6 +45,8 @@ ext {
     constraint_layout_version = '1.1.0-beta5'
     ktx_version = '0.1'
 
+    firebase_version = '11.8.0'
+
     rxkotlin_version = '2.2.0'
     rxlifecycle_version = ''
 
@@ -58,6 +62,9 @@ dependencies {
 
     // kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+
+    // firebase
+    implementation "com.google.firebase:firebase-auth:$firebase_version"
 
     // core
     implementation "com.android.support:appcompat-v7:$support_lib_version"

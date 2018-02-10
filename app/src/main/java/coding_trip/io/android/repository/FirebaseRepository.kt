@@ -6,6 +6,10 @@ class FirebaseRepository (
     private val dataSource: FirebaseDataSource
 ) {
 
+    fun setupUser(accessToken: String) {
+
+    }
+
     fun updateProfileImageUrl() {
 
     }

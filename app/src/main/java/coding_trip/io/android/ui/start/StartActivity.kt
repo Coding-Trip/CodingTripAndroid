@@ -9,9 +9,10 @@ import android.util.Log
 import coding_trip.io.android.BuildConfig
 import coding_trip.io.android.R
 import coding_trip.io.android.datasource.AuthDataSource
-import coding_trip.io.android.datasource.FirebaseDataSource
 import coding_trip.io.android.repository.AuthRepository
-import coding_trip.io.android.repository.FirebaseRepository
+import coding_trip.io.android.ui.home.HomeActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GithubAuthProvider
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_start.login
@@ -55,19 +56,34 @@ class StartActivity : AppCompatActivity() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 authRepository.saveAuthToken(it)
+
+                val intent = Intent(this, HomeActivity::class.java)
+                startActivity(intent)
+//                createFirebaseUser(it)
             }, {
                 TODO("This log implementation will be replaced by Timber")
                 Log.e("StartActivity", "Failed to load access token")
             })
     }
 
+    /*
     private fun createFirebaseUser(token: String) {
-        // this part may be replaced after implementing kodein
-        val firebaseDataSource = FirebaseDataSource()
-        val firebaseRepository = FirebaseRepository(firebaseDataSource)
-
-        firebaseRepository.updateProfileImageUrl()
+        val credential = GithubAuthProvider.getCredential(token)
+        val auth = FirebaseAuth.getInstance()
+        auth.signInWithCredential(credential)
+            .addOnCompleteListener {
+                if (it.isSuccessful.not()) {
+                    Log.e("StartActivity", "Failed to authorized")
+                } else {
+                    val intent = Intent(this, HomeActivity::class.java)
+                    startActivity(intent)
+                }
+            }
+            .addOnFailureListener {
+                Log.e("StartActivity", "Failed to authorized")
+            }
     }
+    */
 
     companion object {
         const val SCOPE = "user"
