@@ -2,6 +2,7 @@ package coding_trip.io.android.ui.detail
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import coding_trip.io.android.R
 
 class DetailActivity : AppCompatActivity() {
 
