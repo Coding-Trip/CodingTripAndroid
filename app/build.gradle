@@ -47,6 +47,7 @@ dependencies {
     implementation "androidx.core:core-ktx:$ktx_version"
 
     // di
+    implementation "com.github.salomonbrys.kodein:kodein:$kodein_version"
     implementation "com.github.salomonbrys.kodein:kodein-android:$kodein_version"
 
     // api
