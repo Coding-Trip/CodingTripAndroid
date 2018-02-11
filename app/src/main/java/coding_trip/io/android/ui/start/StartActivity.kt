@@ -13,8 +13,12 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_start.login
 import timber.log.Timber
+import javax.inject.Inject
 
 class StartActivity : AppCompatActivity() {
+
+    @Inject
+    lateinit var authRepository: AuthRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,9 +49,6 @@ class StartActivity : AppCompatActivity() {
     }
 
     private fun getAccessToken(code: String) {
-        // this part may be replaced after implementing kodein
-        val authRepository = AuthRepository(this)
-
         authRepository.fetchAccessToken(code)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

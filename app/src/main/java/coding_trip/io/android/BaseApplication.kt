@@ -4,6 +4,7 @@ import android.app.Activity
 import android.app.Application
 import coding_trip.io.android.di.DaggerAppComponent
 import coding_trip.io.android.di.NetworkModule
+import coding_trip.io.android.di.RepositoryModule
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
@@ -33,6 +34,7 @@ class BaseApplication : Application(), HasActivityInjector {
         DaggerAppComponent.builder()
             .application(this)
             .addNetworkModule(NetworkModule())
+            .addRepositoryModule(RepositoryModule())
             .build()
             .inject(this)
     }
