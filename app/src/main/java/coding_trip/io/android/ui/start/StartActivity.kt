@@ -9,6 +9,7 @@ import coding_trip.io.android.BuildConfig
 import coding_trip.io.android.R
 import coding_trip.io.android.domain.repository.AuthRepository
 import coding_trip.io.android.ui.home.HomeActivity
+import dagger.android.AndroidInjection
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_start.login
@@ -21,6 +22,7 @@ class StartActivity : AppCompatActivity() {
     lateinit var authRepository: AuthRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_start)
 

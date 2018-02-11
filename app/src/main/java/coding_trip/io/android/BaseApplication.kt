@@ -3,8 +3,6 @@ package coding_trip.io.android
 import android.app.Activity
 import android.app.Application
 import coding_trip.io.android.di.DaggerAppComponent
-import coding_trip.io.android.di.NetworkModule
-import coding_trip.io.android.di.RepositoryModule
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
@@ -20,21 +18,19 @@ class BaseApplication : Application(), HasActivityInjector {
 
     override fun onCreate() {
         super.onCreate()
-        setupTimber()
-        setupDagger()
+        initTimber()
+        initDagger()
     }
 
-    private fun setupTimber() {
+    private fun initTimber() {
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
         }
     }
 
-    private fun setupDagger() {
+    private fun initDagger() {
         DaggerAppComponent.builder()
             .application(this)
-            .addNetworkModule(NetworkModule())
-            .addRepositoryModule(RepositoryModule())
             .build()
             .inject(this)
     }
