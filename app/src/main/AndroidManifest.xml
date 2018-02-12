@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="coding_trip.io.android">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".BaseApplication"
         android:allowBackup="true"
@@ -10,15 +12,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".ui.home.HomeActivity">
+
+        <activity
+            android:name=".ui.start.StartActivity"
+            android:launchMode="singleTask">
             <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="oauth.callback"
+                    android:scheme="io.codingtrip" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.start.StartActivity" />
-        <activity android:name=".ui.detail.DetailActivity"></activity>
+
+        <activity android:name=".ui.home.HomeActivity" />
+        <activity android:name=".ui.detail.DetailActivity" />
     </application>
 
 </manifest>
