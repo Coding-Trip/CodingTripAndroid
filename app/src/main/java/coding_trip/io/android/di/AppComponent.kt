@@ -1,28 +1,38 @@
 package coding_trip.io.android.di
 
+import android.app.Application
 import coding_trip.io.android.BaseApplication
+import coding_trip.io.android.di.activity.DetailActivityBuilder
+import coding_trip.io.android.di.activity.HomeActivityBuilder
+import coding_trip.io.android.di.activity.StartActivityBuilder
 import dagger.BindsInstance
 import dagger.Component
-import dagger.android.AndroidInjectionModule
+import dagger.android.AndroidInjector
+import dagger.android.support.AndroidSupportInjectionModule
 import javax.inject.Singleton
 
 @Singleton
 @Component(modules = [
-    AndroidInjectionModule::class,
+    AndroidSupportInjectionModule::class,
+    // base
     AppModule::class,
     InfraModule::class,
     RepositoryModule::class,
-    ActivityModule::class
+    // ui
+    DetailActivityBuilder::class,
+    HomeActivityBuilder::class,
+    StartActivityBuilder::class
 ])
-interface AppComponent {
+interface AppComponent : AndroidInjector<BaseApplication> {
 
     @Component.Builder
     interface Builder {
+
         @BindsInstance
-        fun application(app: BaseApplication): Builder
+        fun application(application: Application): Builder
 
         fun build(): AppComponent
     }
 
-    fun inject(app: BaseApplication)
+    override fun inject(application: BaseApplication)
 }
