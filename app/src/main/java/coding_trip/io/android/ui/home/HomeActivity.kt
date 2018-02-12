@@ -1,7 +1,7 @@
 package coding_trip.io.android.ui.home
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import coding_trip.io.android.R
 
 class HomeActivity : AppCompatActivity() {
