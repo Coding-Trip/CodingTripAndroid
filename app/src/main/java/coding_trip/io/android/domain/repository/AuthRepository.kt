@@ -8,12 +8,12 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 
 class AuthRepository(
-    private val context: Context
+        private val context: Context
 ) {
 
     fun saveAccessToken(token: String) {
         val sharedPreferences =
-            context.getSharedPreferences(ARG_PREFERENCE_NAME, Context.MODE_PRIVATE)
+                context.getSharedPreferences(ARG_PREFERENCE_NAME, Context.MODE_PRIVATE)
         sharedPreferences.edit {
             putString(ARG_ACCESS_TOKEN, token)
         }
@@ -21,19 +21,19 @@ class AuthRepository(
 
     fun fetchAccessToken(code: String): Observable<String> {
         return this.fetch(code)
-            .map { geneAuthDataFromResponse(it) }
+                .map { geneAuthDataFromResponse(it) }
     }
 
     private fun fetch(code: String): Observable<String> = Observable.create {
         val request = Request.Builder()
-            .url("https://github.com/login/oauth/access_token" +
-                "?code=$code&" +
-                "client_id=${BuildConfig.CLIENT_ID}&" +
-                "client_secret=${BuildConfig.CLIENT_SECRET}")
-            .build()
+                .url("https://github.com/login/oauth/access_token" +
+                        "?code=$code&" +
+                        "client_id=${BuildConfig.CLIENT_ID}&" +
+                        "client_secret=${BuildConfig.CLIENT_SECRET}")
+                .build()
 
         val okHttpClient = OkHttpClient.Builder()
-            .build()
+                .build()
 
         val response = okHttpClient.newCall(request).execute()
         when (response.code()) {
