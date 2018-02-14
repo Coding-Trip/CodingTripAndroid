@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="180dp"
+    android:layout_height="36dp"
+    android:padding="8dp">
+
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@mipmap/ic_launcher_round"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="0dp"
+        android:layout_height="7.5dp"
+        android:layout_marginStart="8dp"
+        android:fontFamily="sans-serif"
+        android:lineSpacingExtra="3.5sp"
+        android:textColor="#524e4d"
+        android:textSize="6.5sp"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toTopOf="@+id/commit"
+        app:layout_constraintE_toEndOf="@id/icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/icon"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Username" />
+
+    <TextView
+        android:id="@+id/commit"
+        android:layout_width="0dp"
+        android:layout_height="6.5dp"
+        android:layout_marginStart="8dp"
+        android:fontFamily="sans-serif"
+        android:lineSpacingExtra="2.5sp"
+        android:textColor="#524e4d"
+        android:textSize="5.5sp"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/icon"
+        app:layout_constraintTop_toBottomOf="@id/username"
+        tools:text="commits" />
+
+    <TextView
+        android:id="@+id/plus"
+        android:layout_width="0dp"
+        android:layout_height="6.5dp"
+        android:layout_marginStart="8dp"
+        android:fontFamily="sans-serif"
+        android:lineSpacingExtra="2.5sp"
+        android:text="plus"
+        android:textColor="#50a351"
+        android:textSize="5.5sp"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/commit"
+        app:layout_constraintTop_toBottomOf="@id/username"
+        tools:text="++" />
+
+    <TextView
+        android:id="@+id/minus"
+        android:layout_width="0dp"
+        android:layout_height="6.5dp"
+        android:fontFamily="sans-serif"
+        android:lineSpacingExtra="2.5sp"
+        android:text="minus"
+        android:textColor="#bd3638"
+        android:textSize="5.5sp"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/plus"
+        app:layout_constraintTop_toBottomOf="@id/username"
+        tools:text="—" />
+
+</android.support.constraint.ConstraintLayout>
