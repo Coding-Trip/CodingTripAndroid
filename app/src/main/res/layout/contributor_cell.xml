@@ -23,7 +23,6 @@
         android:textSize="13sp"
         android:textStyle="normal"
         app:layout_constraintBottom_toTopOf="@+id/commit_text"
-        app:layout_constraintE_toEndOf="@id/image_icon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/image_icon"
         app:layout_constraintTop_toTopOf="parent"
