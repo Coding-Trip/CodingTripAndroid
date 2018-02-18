@@ -45,6 +45,8 @@ ext {
     constraint_layout_version = '1.1.0-beta5'
     ktx_version = '0.1'
 
+    firebase_version = '11.8.0'
+
     rxkotlin_version = '2.2.0'
 
     dagger_version = '2.14.1'
@@ -61,6 +63,10 @@ dependencies {
 
     // kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+
+    // firebase
+    implementation "com.google.firebase:firebase-core:$firebase_version"
+    implementation "com.google.firebase:firebase-auth:$firebase_version"
 
     // core
     implementation "com.android.support:appcompat-v7:$support_lib_version"
@@ -98,3 +104,4 @@ dependencies {
     androidTestImplementation "com.android.support.test:runner:1.0.1"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:3.0.1"
 }
+apply plugin: 'com.google.gms.google-services'
