@@ -4,10 +4,13 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.support.customtabs.CustomTabsIntent
+import android.widget.Toast
 import coding_trip.io.android.BuildConfig
 import coding_trip.io.android.R
 import coding_trip.io.android.domain.repository.AuthRepository
 import coding_trip.io.android.ui.home.HomeActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GithubAuthProvider
 import dagger.android.support.DaggerAppCompatActivity
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -20,9 +23,19 @@ class StartActivity : DaggerAppCompatActivity() {
     @Inject
     lateinit var authRepository: AuthRepository
 
+    private lateinit var auth: FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_start)
+
+        auth = FirebaseAuth.getInstance()
+        val user = auth.currentUser
+        if (user != null) {
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
 
         login.setOnClickListener {
             openCustomTabs()
@@ -56,11 +69,27 @@ class StartActivity : DaggerAppCompatActivity() {
                     authRepository.saveAccessToken(it)
                     Timber.d("Token: $it")
 
-                    val intent = Intent(this, HomeActivity::class.java)
-                    startActivity(intent)
+                    initFirebaseAuth(it)
                 }, {
                     Timber.e("Failed to load access token")
                 })
+    }
+
+    private fun initFirebaseAuth(token: String) {
+        val credential = GithubAuthProvider.getCredential(token)
+        auth.signInWithCredential(credential)
+                .addOnCompleteListener {
+                    if (it.isSuccessful) {
+                        val intent = Intent(this, HomeActivity::class.java)
+                        startActivity(intent)
+                    } else {
+                        Timber.e("Failed to Sign in")
+                        Toast.makeText(this, "Failed to Sign in", Toast.LENGTH_SHORT).show()
+                    }
+                }
+                .addOnFailureListener {
+                    Timber.e(it)
+                }
     }
 
     companion object {

@@ -25,8 +25,8 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
-                    android:host="oauth.callback"
-                    android:scheme="io.codingtrip" />
+                    android:host="codingtripapp.firebaseapp.com/__/auth/handler"
+                    android:scheme="https" />
             </intent-filter>
         </activity>
 
