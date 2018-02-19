@@ -32,8 +32,7 @@ class StartActivity : DaggerAppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         val user = auth.currentUser
         if (user != null) {
-            val intent = Intent(this, HomeActivity::class.java)
-            startActivity(intent)
+            HomeActivity.start(this)
             finish()
         }
 

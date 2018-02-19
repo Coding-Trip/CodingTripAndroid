@@ -1,5 +1,7 @@
 package coding_trip.io.android.ui.home
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 
 import android.support.design.widget.AppBarLayout
@@ -34,6 +36,16 @@ class HomeActivity : AppCompatActivity() {
 
         viewPager.adapter = TabsAdapter(supportFragmentManager)
         tabLayout.setupWithViewPager(viewPager)
+    }
+
+    companion object {
+        fun start(context: Context) {
+            context.startActivity(createIntent(context))
+        }
+
+        fun createIntent(context: Context): Intent {
+            return Intent(context, HomeActivity::class.java)
+        }
     }
 
     private class TabsAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
