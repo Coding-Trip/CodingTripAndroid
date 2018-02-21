@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="72dp"
-    android:padding="16dp">
+    android:paddingStart="16dp">
 
     <ImageView
         android:id="@+id/icon_image"
@@ -16,28 +16,28 @@
 
     <TextView
         android:id="@+id/user_text"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
         android:layout_marginStart="16dp"
         android:textColor="@color/textPrimary"
         android:textSize="@dimen/typography_body1"
         android:textStyle="normal"
         app:layout_constraintBottom_toTopOf="@+id/commit_text"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/icon_image"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
         tools:text="Username" />
 
     <TextView
         android:id="@+id/commit_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:textColor="@color/textPrimary"
         android:textSize="@dimen/typography_caption"
         android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/icon_image"
+        app:layout_constraintStart_toStartOf="@id/user_text"
         app:layout_constraintTop_toBottomOf="@id/user_text"
         tools:text="commits" />
 
