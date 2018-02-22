@@ -3,7 +3,6 @@ package coding_trip.io.android.ui.home
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-
 import android.support.design.widget.AppBarLayout
 import android.support.design.widget.NavigationView
 import android.support.design.widget.TabLayout
@@ -21,10 +20,7 @@ import coding_trip.io.android.ui.home.page.ParticipantPageFragment
 import coding_trip.io.android.ui.home.page.TimeLinePageFragment
 import com.bumptech.glide.request.RequestOptions
 import com.google.firebase.auth.FirebaseAuth
-import android.view.View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-import android.view.View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-import android.os.Build
-import android.view.View
+import com.bumptech.glide.Glide
 
 
 class HomeActivity : AppCompatActivity() {
@@ -39,10 +35,6 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            findViewById<View>(android.R.id.content).systemUiVisibility =
-                    View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-        }
         setContentView(R.layout.activity_home)
 
         toolBar = findViewById(R.id.toolbar)
@@ -66,10 +58,9 @@ class HomeActivity : AppCompatActivity() {
 
             val user = auth.currentUser
             userProfileLoginText.text = user?.displayName
-            GlideApp.with(this)
+            Glide.with(this)
                     .load(user?.photoUrl)
-                    .apply(RequestOptions.circleCropTransform())
-                    .circleCrop()
+                    .apply(RequestOptions().circleCrop())
                     .into(userProfileImage)
         }
         navigationView.setNavigationItemSelectedListener {
