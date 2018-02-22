@@ -7,4 +7,6 @@
     <color name="textPrimary">#524E4D</color>
     <color name="textSecondary">#8A524E4D</color>
     <color name="textLight">#C6C6C6</color>
+
+    <color name="white">#ffffff</color>
 </resources>
