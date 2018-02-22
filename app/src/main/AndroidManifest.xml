@@ -30,7 +30,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.home.HomeActivity" />
+        <activity android:name=".ui.home.HomeActivity"
+                  android:theme="@style/TranslucentStatusBar"/>
         <activity android:name=".ui.detail.DetailActivity" />
     </application>
 
