@@ -18,9 +18,8 @@ import coding_trip.io.android.R
 import coding_trip.io.android.ui.home.page.GalleryPageFragment
 import coding_trip.io.android.ui.home.page.ParticipantPageFragment
 import coding_trip.io.android.ui.home.page.TimeLinePageFragment
-import com.bumptech.glide.request.RequestOptions
+import coding_trip.io.android.util.setCircleImage
 import com.google.firebase.auth.FirebaseAuth
-import com.bumptech.glide.Glide
 
 
 class HomeActivity : AppCompatActivity() {
@@ -51,17 +50,14 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun initDrawer() {
-        navigationView.apply {
+        navigationView.run {
             val header = navigationView.getHeaderView(0)
             val userProfileLoginText = header.findViewById<TextView>(R.id.user_profile_login_text)
             val userProfileImage = header.findViewById<ImageView>(R.id.user_profile_image)
 
             val user = auth.currentUser
             userProfileLoginText.text = user?.displayName
-            Glide.with(this)
-                    .load(user?.photoUrl)
-                    .apply(RequestOptions().circleCrop())
-                    .into(userProfileImage)
+            userProfileImage.setCircleImage(user?.photoUrl)
         }
         navigationView.setNavigationItemSelectedListener {
             when (it.itemId) {
