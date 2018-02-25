@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="72dp"
+    android:paddingStart="16dp">
+
+    <ImageView
+        android:id="@+id/icon_image"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@mipmap/ic_launcher_round"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/user_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:layout_marginStart="16dp"
+        android:textColor="@color/textPrimary"
+        android:textSize="@dimen/typography_body1"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toTopOf="@+id/commit_text"
+        app:layout_constraintStart_toEndOf="@id/icon_image"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="Username" />
+
+    <TextView
+        android:id="@+id/commit_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/textPrimary"
+        android:textSize="@dimen/typography_caption"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/user_text"
+        app:layout_constraintTop_toBottomOf="@id/user_text"
+        tools:text="commits" />
+
+    <TextView
+        android:id="@+id/plus_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="plus++"
+        android:textColor="#50a351"
+        android:layout_marginStart="@dimen/space_8dp"
+        app:layout_constraintBottom_toBottomOf="@id/commit_text"
+        app:layout_constraintStart_toEndOf="@id/commit_text" />
+
+    <TextView
+        android:id="@+id/minus_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="minus-"
+        android:textColor="#bd3638"
+        app:layout_constraintBottom_toBottomOf="@id/commit_text"
+        app:layout_constraintStart_toEndOf="@id/plus_text" />
+
+
+</android.support.constraint.ConstraintLayout>
