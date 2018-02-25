@@ -41,5 +41,24 @@
         app:layout_constraintTop_toBottomOf="@id/user_text"
         tools:text="commits" />
 
+    <TextView
+        android:id="@+id/plus_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="plus++"
+        android:textColor="#50a351"
+        android:layout_marginStart="@dimen/space_8dp"
+        app:layout_constraintBottom_toBottomOf="@id/commit_text"
+        app:layout_constraintStart_toEndOf="@id/commit_text" />
+
+    <TextView
+        android:id="@+id/minus_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="minus-"
+        android:textColor="#bd3638"
+        app:layout_constraintBottom_toBottomOf="@id/commit_text"
+        app:layout_constraintStart_toEndOf="@id/plus_text" />
+
 
 </android.support.constraint.ConstraintLayout>
