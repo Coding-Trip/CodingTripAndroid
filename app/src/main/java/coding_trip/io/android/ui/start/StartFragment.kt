@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import coding_trip.io.android.R
-import kotlinx.android.synthetic.main.activity_start.*
+import kotlinx.android.synthetic.main.fragment_start.*
 
 
 class StartFragment : Fragment() {
@@ -36,7 +36,7 @@ class StartFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        login.setOnClickListener {
+        login_button.setOnClickListener {
             binder?.onLoginButtonClicked()
         }
     }
