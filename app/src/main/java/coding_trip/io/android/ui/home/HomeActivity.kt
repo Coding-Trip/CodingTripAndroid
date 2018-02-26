@@ -18,7 +18,7 @@ import coding_trip.io.android.ui.base.BaseActivity
 import coding_trip.io.android.ui.home.page.GalleryPageFragment
 import coding_trip.io.android.ui.home.page.ParticipantPageFragment
 import coding_trip.io.android.ui.home.page.TimeLinePageFragment
-import coding_trip.io.android.util.setCircleImage
+import coding_trip.io.android.extension.setCircleImage
 import com.google.firebase.auth.FirebaseAuth
 
 

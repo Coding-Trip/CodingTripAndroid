@@ -1,4 +1,4 @@
-package coding_trip.io.android.util
+package coding_trip.io.android.extension
 
 import android.net.Uri
 import android.widget.ImageView
