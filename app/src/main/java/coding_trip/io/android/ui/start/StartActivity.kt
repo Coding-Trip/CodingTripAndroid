@@ -5,25 +5,31 @@ import android.net.Uri
 import android.os.Bundle
 import android.support.customtabs.CustomTabsIntent
 import android.widget.Toast
+import coding_trip.io.android.BaseApplication
 import coding_trip.io.android.BuildConfig
 import coding_trip.io.android.R
-import coding_trip.io.android.domain.repository.AuthRepository
+import coding_trip.io.android.repository.AuthRepository
+import coding_trip.io.android.ui.base.BaseActivity
 import coding_trip.io.android.ui.home.HomeActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GithubAuthProvider
-import dagger.android.support.DaggerAppCompatActivity
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_start.*
 import timber.log.Timber
 import javax.inject.Inject
 
-class StartActivity : DaggerAppCompatActivity() {
+class StartActivity : BaseActivity() {
 
     @Inject
     lateinit var authRepository: AuthRepository
 
     private lateinit var auth: FirebaseAuth
+
+    init {
+        // DI
+        BaseApplication.appComponent.inject(this)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

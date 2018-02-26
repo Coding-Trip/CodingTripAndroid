@@ -1,6 +1,6 @@
 package coding_trip.io.android.di
 
-import coding_trip.io.android.infra.api.GitHubApi
+import coding_trip.io.android.api.GitHubApi
 import com.squareup.moshi.KotlinJsonAdapterFactory
 import com.squareup.moshi.Moshi
 import dagger.Module
@@ -13,8 +13,8 @@ import javax.inject.Singleton
 
 @Module
 class InfraModule {
-    @Provides
     @Singleton
+    @Provides
     @RetrofitGitHub
     fun provideRetrofitForGitHub(okHttpClient: OkHttpClient, moshi: Moshi): Retrofit {
         return Retrofit.Builder()
@@ -31,15 +31,15 @@ class InfraModule {
         return retrofit.create(GitHubApi::class.java)
     }
 
-    @Provides
     @Singleton
+    @Provides
     fun provideOkHttpClient(): OkHttpClient {
         return OkHttpClient.Builder()
                 .build()
     }
 
-    @Provides
     @Singleton
+    @Provides
     fun provideMoshi(): Moshi {
         return Moshi.Builder()
                 .add(KotlinJsonAdapterFactory())

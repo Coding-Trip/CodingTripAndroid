@@ -1,5 +1,6 @@
-package coding_trip.io.android.domain.repository
+package coding_trip.io.android.repository
 
+import android.app.Application
 import android.content.Context
 import androidx.content.edit
 import coding_trip.io.android.BuildConfig
@@ -8,12 +9,12 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 
 class AuthRepository(
-        private val context: Context
+        private val application: Application
 ) {
 
     fun saveAccessToken(token: String) {
         val sharedPreferences =
-                context.getSharedPreferences(ARG_PREFERENCE_NAME, Context.MODE_PRIVATE)
+                application.getSharedPreferences(ARG_PREFERENCE_NAME, Context.MODE_PRIVATE)
         sharedPreferences.edit {
             putString(ARG_ACCESS_TOKEN, token)
         }

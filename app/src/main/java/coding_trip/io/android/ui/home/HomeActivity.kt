@@ -3,21 +3,20 @@ package coding_trip.io.android.ui.home
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-
 import android.support.design.widget.AppBarLayout
 import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.view.ViewPager
-import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import coding_trip.io.android.R
+import coding_trip.io.android.ui.base.BaseActivity
 import coding_trip.io.android.ui.home.page.GalleryPageFragment
 import coding_trip.io.android.ui.home.page.ParticipantPageFragment
 import coding_trip.io.android.ui.home.page.TimeLinePageFragment
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : BaseActivity() {
 
     private lateinit var toolBar: Toolbar
     private lateinit var appBar: AppBarLayout
