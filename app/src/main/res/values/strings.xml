@@ -24,4 +24,9 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+	<string name="nav_home">Home</string>
+	<string name="nav_history">History</string>
+	<string name="nav_profile">Profile</string>
+	<string name="nav_contributor">Contributor</string>
+	<string name="nav_settings">Settings</string>
 </resources>
