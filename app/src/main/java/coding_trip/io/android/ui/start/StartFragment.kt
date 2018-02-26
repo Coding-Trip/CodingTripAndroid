@@ -7,9 +7,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import coding_trip.io.android.R
+import kotlinx.android.synthetic.main.activity_start.*
 
 
 class StartFragment : Fragment() {
+
+    private lateinit var presenter: StartPresenter
+
+    private var binder: ActivityBinder? = null
 
     /**
      * Listener to notify event to activity
@@ -18,10 +23,6 @@ class StartFragment : Fragment() {
 
         fun onLoginButtonClicked()
     }
-
-    private lateinit var presenter: StartPresenter
-
-    private var binder: ActivityBinder? = null
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -34,6 +35,10 @@ class StartFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        login.setOnClickListener {
+            binder?.onLoginButtonClicked()
+        }
     }
 
     companion object {

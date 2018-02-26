@@ -2,6 +2,7 @@ package coding_trip.io.android.di
 
 import coding_trip.io.android.BaseApplication
 import coding_trip.io.android.ui.start.StartActivity
+import coding_trip.io.android.ui.start.StartStore
 import dagger.Component
 import javax.inject.Singleton
 
@@ -26,4 +27,6 @@ interface AppComponent {
 
     // TODO : clean up here
     fun inject(startActivity: StartActivity)
+
+    fun inject(startStore: StartStore)
 }

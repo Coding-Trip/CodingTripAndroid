@@ -1,6 +1,7 @@
 package coding_trip.io.android.ui.detail
 
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import coding_trip.io.android.R
 import coding_trip.io.android.ui.base.BaseActivity
 
