@@ -1,14 +1,14 @@
 package coding_trip.io.android.di
 
-import android.app.Application
-import android.content.Context
+import coding_trip.io.android.BaseApplication
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
 
 @Module
-class AppModule {
-    @Singleton
+class AppModule(private val application: BaseApplication) {
+
     @Provides
-    fun provideContext(application: Application): Context = application
+    @Singleton
+    fun provideApplication(): BaseApplication = application
 }

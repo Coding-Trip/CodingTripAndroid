@@ -10,11 +10,11 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.view.ViewPager
-import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.widget.ImageView
 import android.widget.TextView
 import coding_trip.io.android.R
+import coding_trip.io.android.ui.base.BaseActivity
 import coding_trip.io.android.ui.home.page.GalleryPageFragment
 import coding_trip.io.android.ui.home.page.ParticipantPageFragment
 import coding_trip.io.android.ui.home.page.TimeLinePageFragment
@@ -22,7 +22,7 @@ import coding_trip.io.android.util.setCircleImage
 import com.google.firebase.auth.FirebaseAuth
 
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : BaseActivity() {
 
     private lateinit var toolBar: Toolbar
     private lateinit var appBar: AppBarLayout

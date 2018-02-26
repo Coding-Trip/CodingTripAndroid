@@ -1,14 +1,20 @@
 package coding_trip.io.android
 
-import coding_trip.io.android.di.DaggerAppComponent
-import dagger.android.AndroidInjector
-import dagger.android.support.DaggerApplication
+import android.app.Application
+import coding_trip.io.android.di.AppComponent
 import timber.log.Timber
 
-class BaseApplication : DaggerApplication() {
+class BaseApplication : Application() {
+
+    companion object {
+        lateinit var appComponent: AppComponent
+    }
 
     override fun onCreate() {
         super.onCreate()
+
+        appComponent = AppComponent.Initializer.init(this)
+
         initTimber()
     }
 
@@ -17,9 +23,4 @@ class BaseApplication : DaggerApplication() {
             Timber.plant(Timber.DebugTree())
         }
     }
-
-    override fun applicationInjector(): AndroidInjector<out DaggerApplication> =
-            DaggerAppComponent.builder()
-                    .application(this)
-                    .build()
 }

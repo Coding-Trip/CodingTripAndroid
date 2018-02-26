@@ -1,19 +1,26 @@
-package coding_trip.io.android.domain.repository
+package coding_trip.io.android.repository
 
+import android.app.Application
 import android.content.Context
 import androidx.content.edit
 import coding_trip.io.android.BuildConfig
+import coding_trip.io.android.extension.isNotNull
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GithubAuthProvider
+import io.reactivex.Completable
 import io.reactivex.Observable
 import okhttp3.OkHttpClient
 import okhttp3.Request
+import timber.log.Timber
 
 class AuthRepository(
-        private val context: Context
+        private val application: Application
 ) {
 
+    fun isAlreadyLoggedIn(): Boolean = FirebaseAuth.getInstance().currentUser.isNotNull()
+
     fun saveAccessToken(token: String) {
-        val sharedPreferences =
-                context.getSharedPreferences(ARG_PREFERENCE_NAME, Context.MODE_PRIVATE)
+        val sharedPreferences = application.getSharedPreferences(ARG_PREFERENCE_NAME, Context.MODE_PRIVATE)
         sharedPreferences.edit {
             putString(ARG_ACCESS_TOKEN, token)
         }
@@ -23,6 +30,28 @@ class AuthRepository(
         return this.fetch(code)
                 .map { geneAuthDataFromResponse(it) }
     }
+
+    fun logIn(token: String): Completable =
+            Completable.create { emitter ->
+                FirebaseAuth.getInstance()
+                        .signInWithCredential(GithubAuthProvider.getCredential(token))
+                        .addOnCompleteListener {
+                            if (it.isSuccessful) {
+                                emitter.onComplete()
+                            } else {
+                                emitter.onError(Error("Failed to Sign in"))
+                                        .also {
+                                            Timber.e("Failed to Sign in")
+                                        }
+                            }
+                        }
+                        .addOnFailureListener {
+                            emitter.onError(Error("Something went wrong with Firebase Auth"))
+                                    .also {
+                                        Timber.e("Something went wrong with Firebase Auth")
+                                    }
+                        }
+            }
 
     private fun fetch(code: String): Observable<String> = Observable.create {
         val request = Request.Builder()
