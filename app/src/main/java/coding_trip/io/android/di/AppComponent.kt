@@ -1,6 +1,7 @@
 package coding_trip.io.android.di
 
 import coding_trip.io.android.BaseApplication
+import coding_trip.io.android.ui.home.page.participant.ParticipantStore
 import coding_trip.io.android.ui.start.StartActivity
 import coding_trip.io.android.ui.start.StartStore
 import dagger.Component
@@ -29,4 +30,5 @@ interface AppComponent {
     fun inject(startActivity: StartActivity)
 
     fun inject(startStore: StartStore)
+    fun inject(participantStore: ParticipantStore)
 }
