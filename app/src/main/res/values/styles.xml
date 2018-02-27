@@ -21,6 +21,9 @@
     <style name="TabLayout">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">64dp</item>
+        <item name="android:background">#f9f9f9</item>
+        <item name="tabIndicatorHeight">4dp</item>
+        <item name="tabIndicatorColor">@color/colorAccent</item>
         <item name="tabTextColor">@color/textLight</item>
         <item name="tabSelectedTextColor">@color/colorAccent</item>
         <item name="layout_constraintEnd_toEndOf">parent</item>
