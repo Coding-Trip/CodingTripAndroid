@@ -1,4 +1,4 @@
-package coding_trip.io.android.ui.home.page
+package coding_trip.io.android.ui.home.page.gallery
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -7,9 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import coding_trip.io.android.R
 
-class TimeLinePageFragment : Fragment() {
+class GalleryFragment : Fragment() {
+
+    companion object {
+        fun newInstance(): GalleryFragment = GalleryFragment()
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-            inflater.inflate(R.layout.fragment_page_timeline, container, false)
+            inflater.inflate(R.layout.fragment_gallery, container, false)
 
 }

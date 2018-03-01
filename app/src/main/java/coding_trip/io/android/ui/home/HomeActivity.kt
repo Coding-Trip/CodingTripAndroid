@@ -14,11 +14,11 @@ import android.support.v7.widget.Toolbar
 import android.widget.ImageView
 import android.widget.TextView
 import coding_trip.io.android.R
-import coding_trip.io.android.ui.base.BaseActivity
-import coding_trip.io.android.ui.home.page.GalleryPageFragment
-import coding_trip.io.android.ui.home.page.ParticipantPageFragment
-import coding_trip.io.android.ui.home.page.TimeLinePageFragment
 import coding_trip.io.android.extension.setCircleImage
+import coding_trip.io.android.ui.base.BaseActivity
+import coding_trip.io.android.ui.home.page.gallery.GalleryFragment
+import coding_trip.io.android.ui.home.page.participant.ParticipantFragment
+import coding_trip.io.android.ui.home.page.timeline.TimeLineFragment
 import com.google.firebase.auth.FirebaseAuth
 
 
@@ -92,9 +92,9 @@ class HomeActivity : BaseActivity() {
         }
 
         override fun getItem(position: Int): Fragment = when (position) {
-            0 -> TimeLinePageFragment()
-            1 -> ParticipantPageFragment()
-            else -> GalleryPageFragment()
+            0 -> TimeLineFragment.newInstance()
+            1 -> ParticipantFragment.newInstance()
+            else -> GalleryFragment.newInstance()
         }
 
         override fun getPageTitle(position: Int): String = when (position) {
