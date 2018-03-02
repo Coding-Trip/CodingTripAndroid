@@ -24,12 +24,4 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:text="omuomugin" />
 
-    <View
-        android:id="@+id/divider_view"
-        style="@style/DividerHorizontal"
-        android:layout_width="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1" />
-
 </android.support.constraint.ConstraintLayout>
