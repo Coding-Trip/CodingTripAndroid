@@ -16,5 +16,5 @@ class RepositoryModule {
 
     @Singleton
     @Provides
-    fun provideUserRepository(application: BaseApplication): UserRepository = UserRepository()
+    fun provideUserRepository(): UserRepository = UserRepository()
 }
