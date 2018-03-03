@@ -27,11 +27,11 @@
         app:layout_constraintGuide_percent="0.7" />
 
     <Button
-        android:id="@+id/login_button"
+        android:id="@+id/button_login"
         android:layout_width="176dp"
         android:layout_height="36dp"
         android:background="@drawable/login_button"
-        android:drawableStart="@drawable/ic_github_mark"
+        android:drawableStart="@drawable/ic_github"
         android:padding="@dimen/space_8dp"
         android:text="@string/str_login"
         app:layout_constraintBottom_toBottomOf="parent"

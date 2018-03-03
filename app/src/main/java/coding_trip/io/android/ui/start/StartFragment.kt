@@ -36,7 +36,7 @@ class StartFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        login_button.setOnClickListener {
+        button_login.setOnClickListener {
             binder?.onLoginButtonClicked()
         }
     }
