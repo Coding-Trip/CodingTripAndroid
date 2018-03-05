@@ -1,6 +1,6 @@
 package coding_trip.io.android.ui.start
 
-import coding_trip.io.android.BaseApplication
+import coding_trip.io.android.di.ui.start.StartComponent
 import coding_trip.io.android.repository.AuthRepository
 import io.reactivex.Completable
 import io.reactivex.Observable
@@ -15,7 +15,7 @@ class StartStore {
 
     init {
         // DI
-        BaseApplication.appComponent.inject(this)
+        StartComponent.Initializer.init().inject(this)
     }
 
     fun isAlreadyLoggedIn(): Boolean = authRepository.isAlreadyLoggedIn()

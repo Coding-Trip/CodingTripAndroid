@@ -14,6 +14,7 @@ class BaseApplication : Application() {
         super.onCreate()
 
         appComponent = AppComponent.Initializer.init(this)
+        appComponent.inject(this)
 
         initTimber()
     }

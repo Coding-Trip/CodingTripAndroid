@@ -1,9 +1,8 @@
 package coding_trip.io.android.di
 
 import coding_trip.io.android.BaseApplication
-import coding_trip.io.android.ui.home.page.participant.ParticipantStore
-import coding_trip.io.android.ui.start.StartActivity
-import coding_trip.io.android.ui.start.StartStore
+import coding_trip.io.android.repository.AuthRepository
+import coding_trip.io.android.repository.UserRepository
 import dagger.Component
 import javax.inject.Singleton
 
@@ -16,19 +15,20 @@ import javax.inject.Singleton
 ])
 interface AppComponent {
 
-    fun inject(application: BaseApplication)
-
     object Initializer {
         fun init(application: BaseApplication): AppComponent =
                 DaggerAppComponent.builder()
                         .appModule(AppModule(application))
                         .repositoryModule(RepositoryModule())
+                        .infraModule(InfraModule())
                         .build()
     }
 
-    // TODO : clean up here
-    fun inject(startActivity: StartActivity)
+    fun inject(application: BaseApplication)
 
-    fun inject(startStore: StartStore)
-    fun inject(participantStore: ParticipantStore)
+    // export for useage from it's children
+
+    fun authRepository(): AuthRepository
+    fun userRepository(): UserRepository
+
 }
