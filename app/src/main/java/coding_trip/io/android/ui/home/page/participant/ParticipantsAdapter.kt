@@ -25,12 +25,6 @@ class ParticipantsAdapter(val items: MutableList<User>) : RecyclerView.Adapter<P
         holder.nameText.text = user.github_name
         holder.iconImage.setCircleImage(user.github_profile_url)
 
-        // if it is last
-        if (position == itemCount - 1) {
-            holder.divider.toGone()
-        } else {
-            holder.divider.toVisible()
-        }
     }
 
     override fun getItemCount(): Int {
@@ -40,6 +34,5 @@ class ParticipantsAdapter(val items: MutableList<User>) : RecyclerView.Adapter<P
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val nameText: TextView = view.findViewById(R.id.name_text)
         val iconImage: ImageView = view.findViewById(R.id.icon_image)
-        val divider: View = view.findViewById(R.id.divider_view)
     }
 }
